@@ -1,8 +1,7 @@
 call plug#begin()
 Plug 'tpope/vim-sensible'
-"Plug 'natemaia/vimpaired'
 Plug 'jiangmiao/auto-pairs'
-Plug 'horosphere/formatgen'
+"Plug 'horosphere/formatgen'
 Plug 'scrooloose/syntastic'
 call plug#end()
 
