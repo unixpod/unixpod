@@ -6,8 +6,8 @@ Plug 'horosphere/formatgen'
 Plug 'scrooloose/syntastic'
 call plug#end()
 
-colorscheme gruvbox
-set background=dark
+"colorscheme gruvbox
+"set background=dark
 set exrc
 set secure
 set hidden
