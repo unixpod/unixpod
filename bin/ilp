@@ -1,0 +1,10 @@
+#!/bin/bash
+
+URLS=("https://www.urionlinejudge.com.br/judge/en/login" "http://ufba.br")
+run() {
+    for i in ${URLS[@]}
+        do
+        firefox $i;
+    done
+}
+run
