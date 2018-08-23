@@ -3,33 +3,33 @@
 BAR_ICON=""
 ICON=/usr/share/icons/gnome/32x32/apps/system-software-update.png
 
+total() { UPD=$(checkupdates | wc -l) ;}
+
 while true; do
-    updates=$(checkupdates | wc -l)
+    total
     if hash notify-send &>/dev/null; then
-        if [[ $updates -gt 50 ]]; then
-            notify-send -u critical -i $ICON \
-                        "You really need to update soon!!" "$updates New package updates"
-        elif [[ $updates -gt 25 ]]; then
-            notify-send -u normal -i $ICON \
-                        "You should update soon" "$updates New package updates"
-        elif [[ $updates -gt 2 ]]; then
-            notify-send -u low -i $ICON "$updates New package updates"
+        if (( UPD > 50 )); then
+            notify-send -u critical -i $ICON "You really need to update!!" "$UPD New packages"
+        elif (( UPD > 25 )); then
+            notify-send -u normal -i $ICON "You should update soon" "$UPD New packages"
+        elif (( UPD > 2 )); then
+            notify-send -u low -i $ICON "$UPD New packages"
         fi
     fi
 
-    while [[ $updates -gt 0 ]]; do
-        if [[ $updates -eq 1 ]]; then
-            echo "☺ $updates Update"
-        elif [[ $updates -gt 1 ]]; then
-            echo "☺ $updates Updates"
+    while (( UPD > 0 )); do
+        if (( UPD == 1 )); then
+            echo "$UPD Update"
+        elif (( UPD > 1 )); then
+            echo "$UPD Updates"
         fi
-        sleep 8
-        updates=$(checkupdates | wc -l)
+        sleep 10
+        total
     done
 
-    while [[ $updates -eq 0 ]]; do
+    while (( UPD == 0 )); do
         echo $BAR_ICON
-        sleep 1600
-        updates=$(checkupdates | wc -l)
+        sleep 1800
+        total
     done
 done

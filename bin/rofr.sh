@@ -65,7 +65,7 @@ while getopts ":hvqwcbrl" opt; do
                 *Lock) i3lock-fancy ;;
                 *Logout) session-logout ;;
                 *Reboot) systemctl reboot ;;
-                *Shutdown) systemctl poweroff
+                *Shutdown) systemctl -i poweroff
             esac
             ;;
         *)

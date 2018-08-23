@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 Name=$(basename "$0")
-Version="0.1"
+Version="0.2"
 _usage() {
     cat <<EOF
 
@@ -43,7 +43,7 @@ toggle_polybar() {
 
 
 toggle_compton() {
-    if [[ $opt -eq 1 ]]; then
+    if (( $opt == 1 )); then
         if [[ $(pidof compton) ]]; then
             al-compositor --stop
         else
@@ -65,7 +65,7 @@ toggle_compton() {
 
 
 toggle_redshift() {
-    if [[ $opt -eq 1 ]]; then
+    if (( $opt == 1 )); then
         if [[ $(pidof redshift) ]]; then
             pkill redshift
         else
@@ -93,7 +93,7 @@ toggle_redshift() {
 
 
 toggle_caffeine() {
-    if [[ $opt -eq 1 ]]; then
+    if (( $opt == 1 )); then
         if [[ $(pidof caffeine) ]]; then
             killall caffeine
         else

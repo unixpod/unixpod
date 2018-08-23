@@ -1,0 +1,12 @@
+#!/bin/bash
+RES=$(xwininfo -root | grep geo | awk '{print $2}' | cut -f1 -d"+")
+dir=$HOME/scast
+if [[ $1 == "" ]]
+    then
+    file="screencast.mkv"
+    else
+    file=$1
+fi
+
+printf "Gravando $file [Pressione q para parar a gravação]\n"
+ffmpeg -y -f x11grab -s ${RES} -i :0.0 -f alsa -i default $dir/$file 2>/dev/null 
